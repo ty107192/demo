@@ -1,0 +1,94 @@
+in a client-server application, a single-server host is incapable of keeping up with all the requests from clients. For example, a popular social-networking site can
+quickly become overwhelmed if it has only one server handling all of its requests
+在大型服務中，單一server不夠力
+a data center, housing a large number of hosts, is often used to create a powerful virtual server
+data center創造一個虛擬server來補足單一server不夠力的問題
+Google has 30 to 50 data centers distributed around the world
+P2P architecture there is minimal (or no) reliance on dedicated servers in data centers ，the application exploits direct communication between pairs of intermittently connected hosts, called peers
+p2p架構幾乎不需要server，而是兩點以間歇性的頻率連接，此種點稱為peers
+也有兩種架構混合使用的服務
+One of the most compelling features of P2P architectures is their self-scalability
+p2p最吸引人的部分在於可自行擴展(查)
+p2p面臨的挑戰
+(1)isp friendly
+由於底層實體網?是由?同 Internet Service 
+Provider (ISP)業者提供各網域的網?服務，?同 ISP
+之間的網?頻寬有限且費用昂貴，而目前 P2P 網?
+組成?考慮實體網?位置之特性，將造成大?且快
+速產生 Inter-ISP Traffic，已成為各 ISP 業者極為頭
+痛之問題[1][3]，故?少 ISP 業者皆開始阻擋 P2P
+網?服務之??，以確保其他網?服務之傳輸品
+質
+(2)security
+分散和公開，使安全性降低
+(3)Incentives
+p2p成功有激勵作用
+
+Processes on two different end systems communicate with each other by exchanging
+messages across the computer network
+we typically label one of the two
+processes as the client and the other process as the server
+With the Web, a browser is a client process and a Web server is a server process. With P2P file
+sharing, the peer that is downloading the file is labeled as the client, and the peer that is uploading the file is labeled as the server.
+p2p中，同一個點可能身兼client和server，但還是可以定義
+the
+process that initiates the communication (that is, initially contacts the other
+process at the beginning of the session) is labeled as the client. The process
+that waits to be contacted to begin the session is the server.
+一開始聯絡他人的是client 被動的是server
+A process sends messages into, and receives messages from, the network through a software
+interface called a socket
+client和server process溝通的平台稱為socket
+process像房子 socket像門
+要知道接收的process的訊息要具備(1) the address of the host and (2) an identifier that specifies the receiving process
+in the destination host.
+in general
+a host could be running many network applications. A destination port number
+serves this purpose
+socket is the interface between the application process and the
+transport-layer protocol.
+transport-layer 可能支援不只一種protocol，看需求做選擇
+We can broadly classify the possible services along four dimensions:
+reliable data transfer, throughput, timing, and security.
+以四種維度分類服務
+(1)Reliable Data Transfer
+封包可能掉，造成損失，所以需要有確認機制
+If a protocol provides such a guaranteed data delivery service, it is said to provide
+reliable data transfer
+相對地稱為loss-tolerant applications
+(2)Throughput
+the sending process can deliver bits to the receiving process
+吞吐量會波動
+transport-layer protocol could provide, namely, guaranteed available throughput
+at some specified rate
+可以保證基本的效率
+有吞體量要求的稱為bandwidth-sensitive applications
+(3)Timing
+A transport-layer protocol can also provide timing guarantees
+保證時間，如網路電話或game
+(4)Security
+a transport protocol can provide an application with one or more security
+services
+傳的一方加密，收的一方解密或提供其他認證方法
+TCP:有Reliable Data Transfer的service
+Connection-oriented service.
+TCP的CLIENT和server在資訊傳輸前會交換transportlayer control information，稱為handshaking procedure，可以避免猛烈的封包攻擊，
+tcp有阻塞控制機制
+limit each TCP connection
+to its fair share of network bandwidth.
+UDP:輕便的，沒有handshaking，沒有Reliable Data Transfer機制，沒有阻塞防治機制
+
+An application-layer protocol defines how an application’s processes, running on different
+end systems, pass messages to each other.
+application-layer protocol 定義了
+(1)The types of messages exchanged, for example, request messages and response
+messages
+(2) The syntax of the various message types, such as the fields in the message and
+how the fields are delineated
+(3)The semantics of the fields, that is, the meaning of the information in the fields
+(4)Rules for determining when and how a process sends messages and responds to
+messages
+HTTP為一種application-layer protocol 
+principal application-layer protocol for electronic mail is SMTP
+
+
